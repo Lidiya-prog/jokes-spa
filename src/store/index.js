@@ -18,17 +18,19 @@ export default new Vuex.Store({
       );
       const receivedJokes = await res.json();
       const jokes = receivedJokes.jokes;
+      jokes.forEach((j) => (j.isActive = false));
 
       commit("updateJokes", jokes);
     },
-    // addToFavorites(joke) {
-    //   this.favorites.push(joke);
-    // },
+
     addToFavorites({ commit }, joke) {
       commit("addToFavorites", joke);
     },
     removeFromFavorites({ commit }, item) {
       commit("removeFromFavorites", item);
+    },
+    getSearchValueToVuex({ commit }, searchPhrase) {
+      commit("setSearchValueToVuex", searchPhrase);
     },
   },
   mutations: {
@@ -40,9 +42,8 @@ export default new Vuex.Store({
     //   console.log(favorites);
     // },
     addToFavorites(state, joke) {
-      if (joke.id in state.favorites) {
-        return;
-      } else {
+      if (!state.favorites.find((j) => j.id === joke.id)) {
+        joke.isActive = true;
         state.favorites.push(joke);
       }
 
@@ -52,10 +53,14 @@ export default new Vuex.Store({
       let index = state.favorites.indexOf(item);
       state.favorites.splice(index, 1);
     },
+    setSearchValueToVuex: (state, searchPhrase) => {
+      state.searchValue = searchPhrase;
+    },
   },
   state: {
     jokes: [],
     favorites: [],
+    searchValue: "",
   },
   getters: {
     allJokes(state) {
@@ -63,6 +68,9 @@ export default new Vuex.Store({
     },
     allFavorites(state) {
       return state.favorites;
+    },
+    searchValueGetter(state) {
+      return state.searchValue;
     },
   },
 });

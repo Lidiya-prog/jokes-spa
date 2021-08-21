@@ -12,12 +12,6 @@
         <button class="rm" @click="removeFromFavorites(item)">
           &times;
         </button>
-        <!-- <img -->
-        <!-- class="card-img" -->
-        <!-- src="../assets/like.svg" -->
-        <!-- alt="like" -->
-        <!-- @click="addToFavorites(joke)" -->
-        <!-- /> -->
       </div>
     </div>
   </div>
