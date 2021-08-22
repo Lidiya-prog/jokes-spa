@@ -37,21 +37,20 @@ export default new Vuex.Store({
     updateJokes(state, jokes) {
       state.jokes = jokes;
     },
-    // updateFavorites(state, favorites) {
-    //   state.favorites = favorites;
-    //   console.log(favorites);
-    // },
     addToFavorites(state, joke) {
-      if (!state.favorites.find((j) => j.id === joke.id)) {
+      if (state.jokes.find((j) => j.id === joke.id)) {
         joke.isActive = true;
-        state.favorites.push(joke);
+        state.jokes.joke = joke;
       }
 
-      console.log(state.favorites);
+      //   console.log(state.jokes.joke);
     },
     removeFromFavorites(state, item) {
-      let index = state.favorites.indexOf(item);
-      state.favorites.splice(index, 1);
+      if (state.jokes.find((j) => j.id === item.id)) {
+        item.isActive = false;
+        state.jokes.joke = item;
+      }
+      //   console.log(item);
     },
     setSearchValueToVuex: (state, searchPhrase) => {
       state.searchValue = searchPhrase;
@@ -59,16 +58,16 @@ export default new Vuex.Store({
   },
   state: {
     jokes: [],
-    favorites: [],
+
     searchValue: "",
   },
   getters: {
     allJokes(state) {
       return state.jokes;
     },
-    allFavorites(state) {
-      return state.favorites;
-    },
+    // allFavorites(state) {
+    //   return state.favorites;
+    // },
     searchValueGetter(state) {
       return state.searchValue;
     },
