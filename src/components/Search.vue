@@ -32,7 +32,14 @@ export default {
 /* } */
 input {
   width: 400px;
-  margin-bottom: 50px;
+  border: 2px solid black;
   height: 30px;
+  width: 600px;
+  margin: auto auto 50px;
+}
+@media screen and (max-width: 624px) {
+  input {
+    width: 95%;
+  }
 }
 </style>

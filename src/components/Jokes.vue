@@ -64,17 +64,23 @@ export default {
 };
 </script>
 <style scoped>
+.cards {
+  max-width: 600px;
+  margin: auto;
+  border: 2px solid black;
+}
 .card-img {
   width: 1rem;
   height: 1rem;
+  cursor: pointer;
 }
 .jokes {
-  border: 1px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
-  margin-bottom: 1rem;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 30px 20px;
 }
 .card-img {
   align-self: center;

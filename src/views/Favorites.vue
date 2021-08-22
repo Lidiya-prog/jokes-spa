@@ -1,12 +1,13 @@
 <template>
   <div class="main">
-    <div class="cards" v-if="sortedFavorites">
+    <div class="cards" v-if="sortedFavorites.length !== 0">
       <div class="favorites" v-for="item in sortedFavorites" :key="item.id">
         <p v-if="item.type === 'single'">{{ item.joke }}</p>
         <p v-else-if="item.type === 'twopart'">
           <span>{{ item.setup }}</span> <br />
           <span>{{ item.delivery }}</span>
         </p>
+
         <button class="rm" @click="removeFromFavorites(item)">
           &times;
         </button>
@@ -28,17 +29,21 @@ export default {
 };
 </script>
 <style scoped>
+.cards {
+  max-width: 600px;
+  margin: auto;
+}
 .card-img {
   width: 1rem;
   height: 1rem;
 }
 .favorites {
-  border: 1px solid #ccc;
+  border: 2px solid black;
   border-radius: 5px;
-  margin-bottom: 1rem;
   padding: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 30px 20px;
 }
 .card-img {
   align-self: center;
@@ -48,11 +53,12 @@ p {
   align-items: center;
 }
 .rm {
-  background: red;
+  background: rgb(221, 85, 85);
   border-radius: 50%;
-  color: #fff;
+  color: black;
   font-weight: bold;
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
 </style>
