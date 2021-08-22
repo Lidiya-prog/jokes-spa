@@ -42,15 +42,12 @@ export default new Vuex.Store({
         joke.isActive = true;
         state.jokes.joke = joke;
       }
-
-      //   console.log(state.jokes.joke);
     },
     removeFromFavorites(state, item) {
       if (state.jokes.find((j) => j.id === item.id)) {
         item.isActive = false;
         state.jokes.joke = item;
       }
-      //   console.log(item);
     },
     setSearchValueToVuex: (state, searchPhrase) => {
       state.searchValue = searchPhrase;
@@ -65,9 +62,6 @@ export default new Vuex.Store({
     allJokes(state) {
       return state.jokes;
     },
-    // allFavorites(state) {
-    //   return state.favorites;
-    // },
     searchValueGetter(state) {
       return state.searchValue;
     },

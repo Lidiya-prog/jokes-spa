@@ -1,7 +1,7 @@
 <template>
   <input
     type="text"
-    placeholder="Enter a word to search for jokes..."
+    placeholder="Введите слово для поиска среди анекдотов..."
     v-model="searchValue"
     @input="search(searchValue)"
   />
@@ -25,11 +25,6 @@ export default {
 };
 </script>
 <style scoped>
-/* form { */
-/* display: flex; */
-/* justify-content: center; */
-/* margin-bottom: 50px; */
-/* } */
 input {
   width: 400px;
   border: 2px solid black;
